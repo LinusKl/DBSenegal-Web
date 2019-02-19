@@ -20,12 +20,13 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
+	
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/patient-list")
 	public List<Patient> retrievePatientList() {
 		logger.info("request to retrieve Patient List");
 		
 		System.out.println("Request to retrieve patient list");
-		
 		
 		return patientService.findAllPatients();
 	}
