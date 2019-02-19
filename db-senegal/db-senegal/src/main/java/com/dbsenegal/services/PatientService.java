@@ -1,5 +1,7 @@
 package com.dbsenegal.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,5 +21,10 @@ public class PatientService {
 	
 	public void savePatient(Patient patient) {
 		patientRepository.save(patient);
+	}
+	
+	public List<Patient> findAllPatients() {
+		
+		return (List<Patient>)patientRepository.findAll();
 	}
 }
