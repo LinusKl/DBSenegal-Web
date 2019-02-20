@@ -8,11 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="patiento")
+@Table(name="patient")
 public class Patient {
 
+	/*
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
+	*/
+	@Id
+	@Column(name="PatientID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name="family_name")
@@ -52,6 +58,8 @@ public class Patient {
 		this.email = email;
 		this.telephoneNumber = telephoneNumber;
 		this.others = others;
+		
+		System.out.println("created new Patient");
 	}
 
 	public Integer getId() {
@@ -118,6 +126,10 @@ public class Patient {
 		this.others = others;
 	}
 	
+	@Override
+	public String toString() {
+		return this.firstName + " " + this.familyName + " - " + this.address + "; " + this.telephoneNumber + "; " + this.birthday + "; " + this.email;
+	}
 	
 	
 	

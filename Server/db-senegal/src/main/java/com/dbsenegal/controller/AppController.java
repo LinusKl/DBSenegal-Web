@@ -21,18 +21,11 @@ public class AppController {
 		return "greeting";
 	}
 	
-	@GetMapping("/save-patient")
-	public String savePatient(@RequestParam String address, @RequestParam String birthday, @RequestParam String email,@RequestParam String familyName,@RequestParam String firstName,@RequestParam String others,@RequestParam String telephoneNumber ) {
-		Patient patient = new Patient(familyName, firstName, birthday, address, email, telephoneNumber, others);
-		patientService.savePatient(patient);
-		
-		return "patientSaved";
-	}
-	
 	@GetMapping("/add-patient")
 	public String addPatient() {
 		return "patientAdd";
 	}
+	
 	
 	//Test URL
 	//localhost:8080/save-patient?address=hoshof&birthday=2018-24-01&email=abc&familyName=kev&firstName=in&others=asudfga&telephoneNumber=512451
