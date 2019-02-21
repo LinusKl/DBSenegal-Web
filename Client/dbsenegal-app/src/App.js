@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 import './App.css';
 import PatientsList from './components/PatientsList.js';
 import AddPatient from './components/AddPatient.js';
+import LoginPage from './components/LoginPage.js';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+
+const Home = (props) => {
+  return(
+    <div>Home</div>
+  )
+}
+const Settings = (props) => {
+  return(
+    <div>Settings</div>
+  )
+}
+const About = (props) => {
+  return(
+    <div>About</div>
+  )
+}
+
+
 
 class App extends Component {
 
@@ -38,14 +59,23 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <p>DB Senegal</p>
-
-        </header>
-        <div>
-          <PatientsList patients={patients}/>
-          <AddPatient />
-        </div>
+        <BrowserRouter>
+          <div>
+            <header className="App-header">
+              <p>DB Senegal</p>
+              <Link to='/patients-list'> Patients </Link>
+              <Link to='/patient-modify'> Modify </Link>
+              <Link to='/'> Login </Link>
+            </header>
+            <div>
+                <div>
+                  <Route exact path='/' compoent={LoginPage} />
+                  <Route exact path='/patients-list' component={PatientsList}/>
+                  <Route exact path='/patient-modify' component={AddPatient} />
+                </div>
+            </div>
+          </div>
+        </BrowserRouter>
       </div>
     );
   }

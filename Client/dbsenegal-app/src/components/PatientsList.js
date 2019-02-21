@@ -58,5 +58,5 @@ function patientListShort(props) {
     </table>
   );
 }
-
+//<PatientsList patients={patients}/>
 export default PatientsList;
