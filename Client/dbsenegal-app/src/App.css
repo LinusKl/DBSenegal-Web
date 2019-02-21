@@ -10,7 +10,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 4vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,4 +39,39 @@
 .headline > td{
   padding: 2vh;
   font-size: 1.2em;
+}
+
+.homeLink {
+  text-align: left;
+  text-decoration: none;
+  color: white;
+}
+.homeLink:hover {
+  color: #666666;
+}
+
+.headerLink{
+  text-align: right;
+  text-decoration: none;
+  color: white;
+}
+
+.headerLink:hover{
+  color: #666666;
+}
+
+ul{
+  width: inherit;
+  height: inherit;
+  list-style: none;
+  margin-top: 35px;
+}
+
+ul li{
+  display: inline-block;
+  padding-left: 20px;
+}
+
+ul li:last-child{
+  padding-right: 10px;
 }

@@ -2,8 +2,6 @@ package com.dbsenegal.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +16,6 @@ import com.dbsenegal.services.PatientService;
 @RestController
 public class PatientController {
 
-	Logger logger = LoggerFactory.getLogger(RestController.class);
 
 	@Autowired
 	private PatientService patientService;
@@ -28,11 +25,6 @@ public class PatientController {
 	@GetMapping("/patient-list")
 	@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5000"})
 	public List<Patient> retrievePatientList() {
-		logger.info("request to retrieve Patient List");
-		
-		System.out.println("Request to retrieve patient list");
-		System.out.println();
-		
 		return patientService.findAllPatients();
 	}
 	

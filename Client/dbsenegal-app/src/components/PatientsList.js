@@ -20,8 +20,6 @@ class PatientsList extends Component {
     fetch('http://localhost:8080/patient-list')
     .then(response => response.json())
     .then(data => this.setState({patients: data, isLoading: false}));
-
-    console.log(this.patients);
   }
 
   render(){
