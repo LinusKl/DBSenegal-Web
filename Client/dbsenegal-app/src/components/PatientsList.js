@@ -3,16 +3,40 @@ import React, {Component} from 'react';
 
 class PatientsList extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      patients: null,
+      isLoading: true
+    }
+
+  }
+
+
+  componentDidMount(){
+    this.setState({isLoading: true});
+
+    fetch('http://localhost:8080/patient-list')
+    .then(response => response.json())
+    .then(data => this.setState({patients: data, isLoading: false}));
+
+    console.log(this.patients);
+  }
+
   render(){
-    {console.log(this.props.patients)}
-    return patientList(this.props);
+
+    const{patients, isLoading} = this.state;
+
+    if(this.state.isLoading){
+      return (<h3> Loading... </h3>);
+    }
+    return patientList(patients);
   }
 
 }
 
-
-function patientList(props) {
-
+function patientList(patients) {
   return(
     <table>
       <tbody>
@@ -23,7 +47,7 @@ function patientList(props) {
           <td>Birthday</td>
         </tr>
 
-        {props.patients.map((patient) =>
+        {patients.map((patient) =>
         <tr key={patient.id}>
           <td>{patient.firstName}</td>
           <td>{patient.familyName}</td>
@@ -37,26 +61,4 @@ function patientList(props) {
   );
 }
 
-function patientListShort(props) {
-
-  return(
-    <table>
-      <tbody>
-        <tr className="headline">
-          <td>First Name</td>
-          <td>Last Name</td>
-        </tr>
-
-        {props.patients.map((patient) =>
-        <tr key={patient.id}>
-          <td>{patient.firstName}</td>
-          <td>{patient.familyName}</td>
-        </tr>
-        )}
-
-      </tbody>
-    </table>
-  );
-}
-//<PatientsList patients={patients}/>
 export default PatientsList;
